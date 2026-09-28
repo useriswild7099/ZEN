@@ -1,4 +1,4 @@
-# ZenGuard AI (ADHARA)
+# Zen AI
 > **Privacy-First Offline Trauma-Informed Counseling & Real-Time Emotional Resilience Platform**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-purple.svg)](https://opensource.org/licenses/MIT)
@@ -256,4 +256,4 @@ python -m pytest tests/test_zenguard_customization.py -v
 Distributed under the **MIT License**. See `LICENSE` for details.
 
 ---
-*ZenGuard AI (Project ADHARA) — Transforming emotional resilience through local edge computing, open models, and uncompromising privacy.*
+*Zen AI  — Transforming emotional resilience through local edge computing, open models, and uncompromising privacy.*
