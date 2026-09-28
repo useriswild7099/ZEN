@@ -1,0 +1,85 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Secrets & Environment variables
+.env
+.env.*
+*.env
+!.env.example
+
+# IDE & AI Assistant directories
+.idea/
+.vscode/
+.cursor/
+.gemini/
+.claude/
+.agents/
+skills/
+*.swp
+*.swo
+
+# Next.js & Frontend build
+.next/
+out/
+*.tsbuildinfo
+
+# Python virtual env
+venv/
+.venv/
+backend/venv/
+
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Logs & Temporary files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.tmp
+*.temp
+
+# Large AI model weights & binaries
+*.gguf
+*.bin
+*.pt
+*.pth
+*.safetensors
+*.onnx
+
+# Vercel
+.vercel/
+
+# Exclude non-production / temporary folders
+ponytail-main/
+project documents/
+research/
+.repomixignore
+REPOMIX.txt
+# repomix-output.xml
+skills/
+.agents/
+tech_logos/
+tech_logos_*
+view_and_copy_logos.html
+view_mindmap.html
+convert_to_png.js
+render_mindmap_png.js
+generate_distance_qr.py
+zenguard_mindmap_transparent.*
+zenguard_qr_code.*
+
+# Testing
+coverage/
+.pytest_cache/
+

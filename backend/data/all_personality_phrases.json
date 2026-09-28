@@ -1,0 +1,287 @@
+{
+  "compassionate_friend": {
+    "name": "Compassionate Friend",
+    "description": "A warm, understanding listener who offers emotional support",
+    "phrases": []
+  },
+  "academic_coach": {
+    "name": "Academic Coach",
+    "description": "Helps with study stress, time management, and academic goals",
+    "phrases": []
+  },
+  "mindfulness_guide": {
+    "name": "Mindfulness Guide",
+    "description": "Guides you through breathing exercises and present-moment awareness",
+    "phrases": []
+  },
+  "motivational_coach": {
+    "name": "Motivational Coach",
+    "description": "Inspires action and helps you see your potential",
+    "phrases": []
+  },
+  "mother": {
+    "name": "Mother",
+    "description": "Warm, nurturing, and always there for you",
+    "phrases": []
+  },
+  "father": {
+    "name": "Father",
+    "description": "Supportive, wise, and believes in you",
+    "phrases": []
+  },
+  "sister": {
+    "name": "Sister",
+    "description": "Your ride-or-die, always has your back",
+    "phrases": []
+  },
+  "brother": {
+    "name": "Brother",
+    "description": "Protective, fun, and keeps it real",
+    "phrases": []
+  },
+  "cool_parent": {
+    "name": "Cool Parent",
+    "description": "Chill, experienced advice without the lecture",
+    "phrases": []
+  },
+  "cool_uncle_aunt": {
+    "name": "Cool Uncle/Aunt",
+    "description": "Fun, non-judgmental, and understands your world",
+    "phrases": []
+  },
+  "grandmother": {
+    "name": "Grandma",
+    "description": "Warmth, stories, and unconditional pampering",
+    "phrases": []
+  },
+  "grandfather": {
+    "name": "Grandpa",
+    "description": "Old-school wisdom and gentle strength",
+    "phrases": []
+  },
+  "younger_sibling": {
+    "name": "Little Sibling",
+    "description": "Innocent, playful, and looks up to you",
+    "phrases": []
+  },
+  "the_pet": {
+    "name": "The Pet",
+    "description": "Unconditional love, zero judgment, and golden retriever energy",
+    "phrases": []
+  },
+  "school_teacher": {
+    "name": "School Teacher",
+    "description": "Patient, encouraging, and helps you grow",
+    "phrases": []
+  },
+  "university_professor": {
+    "name": "Professor",
+    "description": "Wisdom, perspective, and deep understanding",
+    "phrases": []
+  },
+  "best_friend": {
+    "name": "Best Friend",
+    "description": "Always in your corner, no judgment",
+    "phrases": []
+  },
+  "study_partner": {
+    "name": "Study Partner",
+    "description": "Studying with you at 2am, sharing the load",
+    "phrases": []
+  },
+  "lover": {
+    "name": "Partner",
+    "description": "Safe, loving, and emotionally attuned",
+    "phrases": []
+  },
+  "dalai_lama": {
+    "name": "Peaceful Scie",
+    "description": "Compassion, inner peace, and gentle wisdom",
+    "phrases": []
+  },
+  "sadguru": {
+    "name": "Modern Mystic",
+    "description": "Clarity, insight, and grounded realization",
+    "phrases": []
+  },
+  "carl_rogers": {
+    "name": "Empathetic Listener",
+    "description": "Unconditional positive regard and deep listening",
+    "phrases": []
+  },
+  "sigmund_freud": {
+    "name": "The Analyst",
+    "description": "Exploring the depths of your mind and patterns",
+    "phrases": []
+  },
+  "oprah_mentor": {
+    "name": "Empowering Mentor",
+    "description": "Inspirational guidance to find your best self",
+    "phrases": []
+  },
+  "logical_mentor": {
+    "name": "Logical Mentor",
+    "description": "Problem-solving with logic and humility",
+    "phrases": []
+  },
+  "mukesh_ambani": {
+    "name": "Visionary Builder",
+    "description": "Long-term vision, patience, and discipline",
+    "phrases": []
+  },
+  "elon_mentor": {
+    "name": "First Principles",
+    "description": "Solving hard problems with engineering mindset",
+    "phrases": []
+  },
+  "brittany_broski": {
+    "name": "Brittany",
+    "description": "Humor, wit, and real talk",
+    "phrases": []
+  },
+  "delaney_rowe": {
+    "name": "Delaney",
+    "description": "Observant, dry humor, and main character energy",
+    "phrases": []
+  },
+  "rob_anderson": {
+    "name": "Rob",
+    "description": "Dry wit and calm, logical perspectives",
+    "phrases": []
+  },
+  "ashish_chanchlani": {
+    "name": "Ashish",
+    "description": "Relatable, funny, and grounded brotherly vibes",
+    "phrases": []
+  },
+  "bhuvan_bam": {
+    "name": "Bhuvan",
+    "description": "Creativity, struggle, and figuring it out",
+    "phrases": []
+  },
+  "samey_raina": {
+    "name": "Samey",
+    "description": "Sharp wit, chess moves, and chill interactions",
+    "phrases": []
+  },
+  "shah_rukh_khan": {
+    "name": "King Khan",
+    "description": "Charisma, romance, and philosophy",
+    "phrases": []
+  },
+  "zakir_khan": {
+    "name": "Zakir",
+    "description": "Relatable stories, poetry, and 'sakht launda' vibes",
+    "phrases": []
+  },
+  "ranveer_allahbadia": {
+    "name": "BeerBiceps",
+    "description": "Spiritual growth, podcast wisdom, and hustle",
+    "phrases": []
+  },
+  "ankur_warikoo": {
+    "name": "Warikoo",
+    "description": "Practical life advice, finance, and 'do epic shit'",
+    "phrases": []
+  },
+  "marcus_aurelius": {
+    "name": "The Stoic",
+    "description": "Resilience, duty, and inner strength",
+    "phrases": []
+  },
+  "socrates": {
+    "name": "The Questioner",
+    "description": "Deep questions to help you find your own answers",
+    "phrases": []
+  },
+  "alan_watts": {
+    "name": "The Mystic",
+    "description": "Philosophical flow, eastern wisdom, and irony",
+    "phrases": []
+  },
+  "rumi": {
+    "name": "The Poet",
+    "description": "Love, devotion, and mystical poetry",
+    "phrases": []
+  },
+  "albert_einstein": {
+    "name": "Einstein",
+    "description": "Curiosity, imagination, and relatively simple answers",
+    "phrases": []
+  },
+  "apj_abdul_kalam": {
+    "name": "Missile Man",
+    "description": "Visionary, humble, and inspiring for students",
+    "phrases": []
+  },
+  "marie_curie": {
+    "name": "Madame Curie",
+    "description": "Persistence, dedication, and discovery",
+    "phrases": []
+  },
+  "steve_jobs": {
+    "name": "The Visionary",
+    "description": "Design, focus, and thinking different",
+    "phrases": []
+  },
+  "david_goggins": {
+    "name": "Goggins",
+    "description": "No excuses. Pure discipline and mental hardness.",
+    "phrases": []
+  },
+  "jordan_peterson": {
+    "name": "The Professor",
+    "description": "Responsibility, order, and cleaning your room",
+    "phrases": []
+  },
+  "strict_coach": {
+    "name": "Head Coach",
+    "description": "Demanding but fair. Pushes you to win.",
+    "phrases": []
+  },
+  "gordon_ramsay": {
+    "name": "Chef",
+    "description": "High standards and direct feedback (PG-13)",
+    "phrases": []
+  },
+  "the_poet": {
+    "name": "Lyrical Soul",
+    "description": "Finds beauty and rhyme in your struggle",
+    "phrases": []
+  },
+  "the_artist": {
+    "name": "The Artist",
+    "description": "Seeing life through color, shape, and perspective",
+    "phrases": []
+  },
+  "the_musician": {
+    "name": "The Musician",
+    "description": "Life as rhythm, harmony, and improvisation",
+    "phrases": []
+  },
+  "bob_ross": {
+    "name": "Happy Painter",
+    "description": "No mistakes, just happy accidents",
+    "phrases": []
+  },
+  "the_librarian": {
+    "name": "Librarian",
+    "description": "Quiet, organized, and resourceful",
+    "phrases": []
+  },
+  "the_gardener": {
+    "name": "Gardener",
+    "description": "Patience, growth, and nurturing roots",
+    "phrases": []
+  },
+  "the_time_traveler": {
+    "name": "Time Traveler",
+    "description": "Perspective from the future. It gets better.",
+    "phrases": []
+  },
+  "the_universe": {
+    "name": "The Universe",
+    "description": "Vast, infinite, and uncaring but holding you",
+    "phrases": []
+  }
+}

@@ -1,0 +1,120 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# ZenGuard AI — Electron Builder Configuration
+# 
+# Builds desktop installers for Windows (NSIS + Portable).
+# Bundles the backend/ folder as an extra resource so the app
+# can spawn the FastAPI server locally.
+#
+# PRIVACY NOTE:
+# - No telemetry
+# - No file type associations (prevents data leak via file extension)
+# - No protocol handler registration in builder (handled in main.js)
+# ─────────────────────────────────────────────────────────────────────────────
+
+appId: com.zenguard.ai
+productName: ZenGuard AI
+copyright: Copyright © 2026 ZenGuard AI
+
+# ─── Directories ──────────────────────────────────────────────────────────────
+directories:
+  output: dist
+  buildResources: build
+
+# ─── Source Files ─────────────────────────────────────────────────────────────
+files:
+  # Include electron shell files
+  - electron/**/*
+  # Include the static-exported frontend
+  - frontend/out/**/*
+  # Include frontend package.json (for version info)
+  - frontend/package.json
+  # Exclude dev/build artifacts from frontend
+  - "!frontend/node_modules"
+  - "!frontend/.next"
+  - "!frontend/src"
+  - "!frontend/.env*"
+  - "!frontend/.git*"
+  # Exclude non-essential root files
+  - "!.git"
+  - "!.venv"
+  - "!.vercel"
+  - "!research"
+  - "!repomix-output.xml"
+
+# ─── Extra Resources (bundled alongside the app, not inside asar) ─────────
+extraResources:
+  # Bundle the entire backend for the spawner
+  - from: backend
+    to: backend
+    filter:
+      # Include all Python source
+      - "**/*.py"
+      - "**/*.txt"
+      - "**/*.json"
+      - "**/*.md"
+      - "**/*.env"
+      # Include the venv (required to run)
+      - "venv/**/*"
+      # Include data directory
+      - "data/**/*"
+      # Exclude caches and build artifacts
+      - "!**/__pycache__"
+      - "!**/__pycache__/**"
+      - "!**/*.pyc"
+      - "!**/*.pyo"
+      - "!**/venv/Lib/site-packages/pip/**"
+      - "!**/venv/Lib/site-packages/setuptools/**"
+  # Bundle the static frontend output
+  - from: frontend/out
+    to: frontend/out
+    filter:
+      - "**/*"
+
+# ─── ASAR Configuration ──────────────────────────────────────────────────────
+asar: true
+asarUnpack:
+  # Unpack native modules if any
+  - "**/*.node"
+
+# ─── Windows Configuration ───────────────────────────────────────────────────
+win:
+  target:
+    - target: nsis
+      arch:
+        - x64
+    - target: portable
+      arch:
+        - x64
+  icon: frontend/public/logo.png
+  # Requested execution level (no admin required)
+  requestedExecutionLevel: asInvoker
+
+# ─── NSIS Installer Configuration ────────────────────────────────────────────
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  installerIcon: frontend/public/logo.png
+  uninstallerIcon: frontend/public/logo.png
+  installerHeaderIcon: frontend/public/logo.png
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: ZenGuard AI
+  # Don't run app after install (user may need to set up Ollama first)
+  runAfterFinish: false
+  # Show license page (optional — remove if no LICENSE file)
+  # license: LICENSE
+
+# ─── Portable Configuration ──────────────────────────────────────────────────
+portable:
+  artifactName: "ZenGuard-AI-${version}-Portable.exe"
+
+# ─── Auto-Update (GitHub Releases) ───────────────────────────────────────────
+publish:
+  provider: github
+  owner: useriswild7099
+  repo: ZENGUARD.AI
+  # Use draft releases so you can review before publishing
+  releaseType: release
+
+# ─── Build Metadata ──────────────────────────────────────────────────────────
+buildVersion: "1.0.0"

@@ -1,0 +1,19 @@
+# Backend and Python
+backend/
+ai model/
+research/
+ponytail-main/
+project documents/
+.venv/
+venv/
+*.gguf
+REPOMIX.txt
+repomix-output.xml
+
+# Desktop / Electron build artifacts
+dist/
+electron/
+install.bat
+install.sh
+start.bat
+start.sh

@@ -1,0 +1,25 @@
+{
+  "name": "zenguard-ai-desktop",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ZenGuard AI - Privacy-First Mental Health Companion (Desktop)",
+  "author": "ZenGuard AI",
+  "main": "electron/main.js",
+  "scripts": {
+    "build": "cd frontend && npm run build",
+    "start": "cd frontend && npm start",
+    "electron:dev": "cd frontend && npx cross-env BUILD_TARGET=electron npm run build && cd .. && npx electron .",
+    "electron:start": "npx electron .",
+    "electron:build": "cd frontend && npx cross-env BUILD_TARGET=electron npm run build && cd .. && npx electron-builder --config electron-builder.yml",
+    "frontend:dev": "cd frontend && npm run dev",
+    "frontend:build": "cd frontend && npx cross-env BUILD_TARGET=electron npm run build",
+    "postinstall": "cd frontend && npm install --legacy-peer-deps"
+  },
+  "devDependencies": {
+    "electron": "^35.0.0",
+    "electron-builder": "^26.0.0",
+    "electron-updater": "^6.4.0",
+    "cross-env": "^7.0.3",
+    "concurrently": "^9.0.0"
+  }
+}
