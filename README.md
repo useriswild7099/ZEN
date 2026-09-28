@@ -10,11 +10,11 @@
 [![Privacy](https://img.shields.io/badge/Data%20Storage-ZERO%20%28Stateless%29-brightgreen.svg)](#zero-knowledge-privacy-architecture)
 [![Repo](https://img.shields.io/badge/GitHub-useriswild7099%2FADHARA-blue.svg)](https://github.com/useriswild7099/ZEN)
 
-ZenGuard AI (Project ADHARA) is a high-performance, edge-computing mental health and trauma-informed recovery platform designed to provide private, culturally grounded psychological support, somatic grounding, and crisis de-escalation. By executing local-first Large Language Models (LLMs) on-device via **Ollama**, ZenGuard AI delivers clinical-grade conversational support, emotional masking detection, and somatic nervous system stabilization with **absolute privacy**—no data, conversation transcripts, or journal entries ever leave your computer.
+ZenGuard AI  is a high-performance, edge-computing mental health and trauma-informed recovery platform designed to provide private, culturally grounded psychological support, somatic grounding, and crisis de-escalation. By executing local-first Large Language Models (LLMs) on-device via **Ollama**, ZenGuard AI delivers clinical-grade conversational support, emotional masking detection, and somatic nervous system stabilization with **absolute privacy**—no data, conversation transcripts, or journal entries ever leave your computer.
 
 ---
 
-## 🌟 Core Highlights & Architectural Pillars
+Core Highlights & Architectural Pillars
 
 ```
  ┌────────────────────────────────────────────────────────────────────────┐
@@ -30,26 +30,26 @@ ZenGuard AI (Project ADHARA) is a high-performance, edge-computing mental health
 
 - **Zero-Cloud Data Sovereignty**: All emotional analysis and conversational inferences run locally on hardware via Ollama. No remote telemetry, no external API keys, and zero vendor lock-in.
 - **5 Specialized Trauma Therapy Personalities**:
-  - 🤝 **Dost (Saathi)**: Compassionate trauma companion & emotional anchor.
-  - 🧭 **Margdarshak**: Structured guidance counselor & step-by-step psychological stabilizer.
-  - 🛡️ **Prahari**: Rights protection navigator & survivor empowerment counselor.
-  - 🌿 **Vaidya**: Somatic grounding expert & mind-body nervous system stabilizer.
-  - ✨ **Apna Saathi**: Fully customizable, user-tailored recovery companion.
+  -  **Dost (Saathi)**: Compassionate trauma companion & emotional anchor.
+  -  **Margdarshak**: Structured guidance counselor & step-by-step psychological stabilizer.
+  -  **Prahari**: Rights protection navigator & survivor empowerment counselor.
+  -  **Vaidya**: Somatic grounding expert & mind-body nervous system stabilizer.
+  -  **Apna Saathi**: Fully customizable, user-tailored recovery companion.
 - **Multilingual Support for 18+ Indian Languages**: Native script and Romanized code-switching support across Hindi, Hinglish, Bengali, Marathi, Telugu, Tamil, Gujarati, Kannada, Punjabi, Odia, Assamese, Urdu, and English.
 - **Somatic & Sensory Grounding Suite**:
   - Interactive **Box Breathing** with visual pacing.
   - **5-4-3-2-1 Sensory Grounding** for acute panic de-escalation.
   - **Mood Doodle Canvas**: Multimodal non-verbal expression translating strokes and color psychology into emotional cues.
 - **Statutory Safeguards & Helpline Integration**: Constant surfacing of verified 24×7 national helplines:
-  - 📞 **Tele-MANAS**: `14416` (National Mental Health Helpline — Toll-free, 24×7, multi-language).
-  - ⚖️ **NALSA**: `15100` (National Legal Services Authority — Free legal aid).
+  - **Tele-MANAS**: `14416` (National Mental Health Helpline — Toll-free, 24×7, multi-language).
+  -  **NALSA**: `15100` (National Legal Services Authority — Free legal aid).
 - **Dual-System Architecture with Sahayak Dashboard**:
   - **ZenGuard Client**: Privacy-first personal sanctuary for the user.
   - **Sahayak Reviewer Portal**: Professional triage interface receiving strictly anonymous, numeric-only wellness scores (0-100) with zero conversation transcripts or PII.
 
 ---
 
-## 🏗️ System Architecture
+## System Architecture
 
 ```mermaid
 flowchart TD
@@ -94,7 +94,7 @@ flowchart TD
 
 ---
 
-## 🚀 Quick Start (Automated & Manual)
+## Quick Start (Automated & Manual)
 
 ### Option 1: Automated 1-Click Launch (Recommended)
 
@@ -117,10 +117,10 @@ chmod +x install.sh start.sh
 ```
 
 Once started:
-- 🌿 **ZenGuard Sanctuary**: `http://localhost:3001`
-- 🛡️ **Sahayak Caseworker Portal**: `http://localhost:3000`
-- ⚙️ **FastAPI Backend**: `http://127.0.0.1:8000`
-- 🧠 **Local Ollama Inference**: `http://127.0.0.1:11434`
+-  **ZenGuard Sanctuary**: `http://localhost:3001`
+-  **Sahayak Caseworker Portal**: `http://localhost:3000`
+-  **FastAPI Backend**: `http://127.0.0.1:8000`
+-  **Local Ollama Inference**: `http://127.0.0.1:11434`
 
 ---
 
@@ -181,7 +181,7 @@ npm run dev -- --port 3000
 
 ---
 
-## 🔒 Zero-Knowledge Privacy Architecture
+##  Zero-Knowledge Privacy Architecture
 
 ZenGuard AI was built from first principles around digital sovereignty and survivor safety:
 
@@ -193,7 +193,7 @@ ZenGuard AI was built from first principles around digital sovereignty and survi
 
 ---
 
-## 🌐 Cloud Deployment & Vercel Fallback
+## Cloud Deployment & Vercel Fallback
 
 When accessed via a cloud deployment (such as Vercel) where local Ollama hardware is not directly reachable:
 - The landing page, somatic tools (Box Breathing, 5-4-3-2-1 Grounding), Mood Doodle canvas, and statutory helpline directories remain fully functional in the browser.
@@ -201,7 +201,7 @@ When accessed via a cloud deployment (such as Vercel) where local Ollama hardwar
 
 ---
 
-## 📁 Project Directory Structure
+##  Project Directory Structure
 
 ```
 ADHARA/
@@ -240,7 +240,7 @@ ADHARA/
 
 ---
 
-## 🛠️ Verification & Test Suite
+##  Verification & Test Suite
 
 The backend includes a comprehensive 30-case automated test suite verifying trauma persona integrity, crisis detector protocols, 18+ language wellness scoring, and anonymous Sahayak score synchronization:
 
