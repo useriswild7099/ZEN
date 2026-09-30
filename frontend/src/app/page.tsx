@@ -31,7 +31,7 @@ import {
   WifiOff, Cpu, UserX, Code, 
   Plus, BookOpen, Lightbulb, Flame, Calendar, Shield,
   GraduationCap, Sparkles, LifeBuoy, Zap, Languages,
-  Palette, Wind, MapPin, Volume2, VolumeX
+  Palette, Wind, MapPin, Volume2, VolumeX, Sun, Moon
 } from 'lucide-react';
 
 // ZenGuard Journal imports
@@ -53,9 +53,17 @@ import { Toaster } from '@/components/ui/sonner';
 import React, { memo } from 'react';
 import { TRANSLATIONS } from '@/lib/translations';
 
-// White background — no dark overlay needed
-const StaticBackground = memo(() => {
-  return <div className="fixed inset-0 -z-10 bg-white" style={{ transform: 'translateZ(0)' }} />;
+// Background that responds to light/dark theme
+const StaticBackground = memo(({ isDark }: { isDark: boolean }) => {
+  if (!isDark) {
+    return <div className="fixed inset-0 -z-10 bg-white" style={{ transform: 'translateZ(0)' }} />;
+  }
+  return (
+    <div className="fixed inset-0 overflow-hidden -z-10 bg-[#0E0D13]" style={{ transform: 'translateZ(0)' }}>
+      <div className="absolute -top-[15%] left-[5%] w-[650px] h-[650px] rounded-full bg-gradient-to-br from-purple-800/20 via-amber-700/8 to-transparent blur-[120px] pointer-events-none" />
+      <div className="absolute top-[35%] -right-[15%] w-[500px] h-[500px] rounded-full bg-gradient-to-bl from-indigo-800/15 to-transparent blur-[100px] pointer-events-none" />
+    </div>
+  );
 });
 
 StaticBackground.displayName = 'StaticBackground';
@@ -175,33 +183,58 @@ export default function Home() {
     return () => clearTimeout(timer);
   }, [activeView]);
 
-
-  const isLight = theme === 'light';
+  const isDark = theme === 'dark' || theme === 'nature';
+  const isLight = !isDark;
   const textPrimary = isLight ? 'text-zinc-900' : 'text-white';
-  const textSecondary = isLight ? 'text-zinc-500' : 'text-zinc-100';
+  const textSecondary = isLight ? 'text-zinc-600' : 'text-zinc-200';
   const textMuted = isLight ? 'text-zinc-400' : 'text-white/60';
 
+  // Sync dark class to <html> so ALL dark: Tailwind classes work across every component
+  useEffect(() => {
+    if (isDark) {
+      document.documentElement.classList.add('dark');
+      document.documentElement.style.backgroundColor = '#0E0D13';
+      document.documentElement.style.colorScheme = 'dark';
+    } else {
+      document.documentElement.classList.remove('dark');
+      document.documentElement.style.backgroundColor = '#ffffff';
+      document.documentElement.style.colorScheme = 'light';
+    }
+  }, [isDark]);
+
   return (
-    <div className="min-h-screen relative bg-white text-zinc-900">
+    <div className={`min-h-screen relative transition-colors duration-300 ${isDark ? 'dark bg-[#0E0D13] text-white' : 'bg-white text-zinc-900'}`}>
       <BackgroundMusic isMuted={isMuted} />
 
-      <StaticBackground activeView={activeView} isLight={isLight} />
+      <StaticBackground isDark={isDark} />
 
       {/* View Content Hub */}
       {activeView === 'landing' && (
         <div className="min-h-screen relative flex flex-col">
           <nav className="relative z-10 flex justify-between items-center px-6 md:px-12 py-6">
             <div className="flex items-center gap-2">
-              <span className="text-xl font-bold tracking-[0.5em] uppercase transition-colors duration-500 dark:text-white text-zinc-900" style={{ fontFamily: 'var(--font-heading)' }}>
+              <span className={`text-xl font-bold tracking-[0.5em] uppercase transition-colors duration-300 ${isLight ? 'text-zinc-900' : 'text-white'}`} style={{ fontFamily: 'var(--font-heading)' }}>
                 ZenGuard
               </span>
             </div>
             <div className="flex items-center gap-4">
+              {/* Dark / Light Mode Toggle */}
+              <button
+                onClick={() => setTheme(isDark ? 'light' : 'dark')}
+                className={`flex items-center justify-center w-10 h-10 border rounded-xl transition-all ${
+                  isLight ? 'bg-zinc-100 hover:bg-zinc-200 border-zinc-200 text-zinc-700' : 'bg-white/10 hover:bg-white/20 border-white/20 text-white'
+                }`}
+                title={isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+                aria-label={isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+              >
+                {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+              </button>
+
               {/* Sound Toggle */}
               <button 
                 onClick={() => setIsMuted(!isMuted)}
                 className={`flex items-center justify-center w-10 h-10 border rounded-xl transition-all ${
-                  isLight ? 'bg-zinc-100 hover:bg-zinc-200 border-zinc-200 text-zinc-600' : 'bg-white/5 hover:bg-white/10 border-white/10 text-white/60 hover:text-white'
+                  isLight ? 'bg-zinc-100 hover:bg-zinc-200 border-zinc-200 text-zinc-600' : 'bg-white/10 hover:bg-white/20 border-white/20 text-white/80 hover:text-white'
                 }`}
                 title={isMuted ? "Unmute" : "Mute"}
                 aria-label={isMuted ? "Unmute background music" : "Mute background music"}
@@ -211,16 +244,24 @@ export default function Home() {
 
               {/* Language Switcher */}
               <div className="relative group/lang z-50">
-                <button className={`flex items-center gap-2 px-4 py-2 border rounded-xl transition-all h-10 dark:bg-white/5 dark:border-white/10 dark:hover:bg-white/10 bg-zinc-100 hover:bg-zinc-200 border-zinc-200`}>
-                  <Languages className="w-4 h-4 text-purple-400" />
-                  <span className={`text-xs font-bold uppercase tracking-wider dark:text-white text-zinc-700`}>{globalLanguage}</span>
+                <button className={`flex items-center gap-2 px-4 py-2 border rounded-xl transition-all h-10 ${
+                  isLight ? 'bg-zinc-100 hover:bg-zinc-200 border-zinc-200' : 'bg-white/10 hover:bg-white/20 border-white/20'
+                }`}>
+                  <Languages className="w-4 h-4 text-purple-500" />
+                  <span className={`text-xs font-bold uppercase tracking-wider ${isLight ? 'text-zinc-700' : 'text-white'}`}>{globalLanguage}</span>
                 </button>
-                <div className="absolute right-0 top-full mt-2 w-40 bg-black/90 backdrop-blur-2xl border border-white/10 rounded-2xl shadow-2xl opacity-0 invisible group-hover/lang:opacity-100 group-hover/lang:visible transition-all overflow-hidden flex flex-col py-1">
+                <div className={`absolute right-0 top-full mt-2 w-40 backdrop-blur-2xl border rounded-2xl shadow-2xl opacity-0 invisible group-hover/lang:opacity-100 group-hover/lang:visible transition-all overflow-hidden flex flex-col py-1 ${
+                  isLight ? 'bg-white border-zinc-200' : 'bg-zinc-900 border-white/10'
+                }`}>
                   {['English', 'Hindi', 'Hinglish', 'Assamese', 'Bengali', 'Marathi', 'Telugu', 'Tamil', 'Gujarati', 'Kannada', 'Punjabi', 'Odia', 'Urdu'].map(lang => (
                     <button 
                       key={lang}
                       onClick={() => setGlobalLanguage(lang)}
-                      className={`px-4 py-2 text-left text-xs hover:bg-white/10 transition-colors ${globalLanguage === lang ? 'text-purple-400 font-bold' : 'text-zinc-400'}`}
+                      className={`px-4 py-2 text-left text-xs transition-colors ${
+                        isLight
+                          ? `hover:bg-zinc-50 ${globalLanguage === lang ? 'text-purple-600 font-bold' : 'text-zinc-700'}`
+                          : `hover:bg-white/10 ${globalLanguage === lang ? 'text-purple-400 font-bold' : 'text-zinc-300'}`
+                      }`}
                     >
                       {lang}
                     </button>
@@ -342,15 +383,17 @@ export default function Home() {
                   className={`flex flex-col items-center gap-3 group ${item.action ? 'cursor-pointer' : ''}`}
                   onClick={item.action}
                 >
-                  <div className={`w-12 h-12 glass-card flex items-center justify-center transition-colors dark:border-white/10 dark:hover:bg-white/10 bg-zinc-100 border-zinc-200 hover:bg-zinc-200`}>
+                  <div className={`w-12 h-12 rounded-2xl border flex items-center justify-center transition-colors ${
+                    isLight ? 'bg-zinc-100 border-zinc-200 hover:bg-zinc-200' : 'bg-white/5 border-white/10 hover:bg-white/10'
+                  }`}>
                     <item.icon className={`w-6 h-6 ${item.color}`} />
                   </div>
-                  <span className={`font-mono text-xs tracking-wide transition-colors dark:text-zinc-300 text-zinc-500`}>{item.label}</span>
+                  <span className={`font-mono text-xs tracking-wide transition-colors ${isLight ? 'text-zinc-600' : 'text-zinc-300'}`}>{item.label}</span>
                 </div>
               ))}
             </div>
           </main>
-          <footer className="relative z-10 text-center py-8 text-sm text-gray-400">
+          <footer className={`relative z-10 text-center py-8 text-sm ${isLight ? 'text-zinc-500' : 'text-zinc-400'}`}>
             <p>{t.footerText}</p>
           </footer>
         </div>
