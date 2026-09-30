@@ -263,6 +263,15 @@ export default function Home() {
               {/* Sahayak MoSJE Admin Portal Button */}
               <a
                 href={process.env.NEXT_PUBLIC_SAHAYAK_URL || "http://localhost:5173"}
+                onClick={(e) => {
+                  e.preventDefault();
+                  const baseUrl = process.env.NEXT_PUBLIC_SAHAYAK_URL || "http://localhost:5173";
+                  // Grab the latest score if available, otherwise fallback
+                  const latestScore = entries.length > 0 && entries[0].analysis?.wellness_score 
+                    ? entries[0].analysis.wellness_score 
+                    : 85;
+                  window.open(`${baseUrl}?score=${Math.round(latestScore)}`, "_blank");
+                }}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-3 py-2 border rounded-xl transition-all h-10 bg-blue-950/40 hover:bg-blue-900/60 border-blue-500/40 text-blue-300 hover:text-white shadow-sm"
