@@ -53,36 +53,9 @@ import { Toaster } from '@/components/ui/sonner';
 import React, { memo } from 'react';
 import { TRANSLATIONS } from '@/lib/translations';
 
-// Memoized background component to prevent re-renders when parent state changes
-const StaticBackground = memo(({ activeView, isLight }: { activeView: string; isLight: boolean }) => {
-  return (
-    <div className={`fixed inset-0 overflow-hidden -z-10 transition-opacity duration-1000 ${isLight ? 'opacity-0' : 'opacity-100'} bg-[#0E0D13]`} style={{ transform: 'translateZ(0)' }}>
-      {/* Satisfying Tactile Paper Texture Canvas Tile */}
-      <div 
-        className="absolute inset-0 w-full h-full opacity-60 mix-blend-overlay"
-        style={{ 
-          backgroundImage: "url('/paper-texture.svg')",
-          backgroundRepeat: 'repeat',
-          backgroundSize: '360px 360px',
-          transform: 'translate3d(0, 0, 0)'
-        }}
-      />
-
-      {/* Gentle Warm Parchment Ambient Glow */}
-      <div className="absolute -top-[15%] left-[5%] w-[85vw] md:w-[650px] h-[85vw] md:h-[650px] rounded-full bg-gradient-to-br from-purple-800/18 via-amber-700/8 to-transparent blur-[120px] pointer-events-none"></div>
-      <div className="absolute top-[35%] -right-[15%] w-[75vw] md:w-[500px] h-[75vw] md:h-[500px] rounded-full bg-gradient-to-bl from-indigo-800/15 via-rose-900/10 to-transparent blur-[100px] pointer-events-none"></div>
-      <div className="absolute top-[65%] -left-[10%] w-[80vw] md:w-[550px] h-[80vw] md:h-[550px] rounded-full bg-gradient-to-tr from-amber-900/10 via-purple-900/12 to-transparent blur-[110px] pointer-events-none"></div>
-
-      {/* Glass overlay with smooth fade */}
-      <div className={`absolute inset-0 transition-all duration-700 ${
-        activeView === 'help' ? 'bg-[#0E0D13]/85 backdrop-blur-[3px]' :
-        activeView === 'knowledge' ? 'bg-[#0E0D13]/70 backdrop-blur-[2px]' :
-        activeView === 'chat' ? 'bg-[#0E0D13]/60 backdrop-blur-[2px]' :
-        activeView === 'landing' ? 'bg-gradient-to-b from-[#0E0D13]/30 via-transparent to-[#0E0D13]/90' :
-        'bg-[#0E0D13]/60 backdrop-blur-[1px]'
-      }`} style={{ transform: 'translateZ(0)' }}></div>
-    </div>
-  );
+// White background — no dark overlay needed
+const StaticBackground = memo(() => {
+  return <div className="fixed inset-0 -z-10 bg-white" style={{ transform: 'translateZ(0)' }} />;
 });
 
 StaticBackground.displayName = 'StaticBackground';
@@ -101,7 +74,7 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState<'timeline' | 'insights' | 'stats' | 'calendar'>('timeline');
   const [globalLanguage, setGlobalLanguage] = useState('English');
   const [isMuted, setIsMuted] = useState(true);
-  const [theme, setTheme] = useState<'nature' | 'light' | 'dark'>('nature');
+  const [theme, setTheme] = useState<'nature' | 'light' | 'dark'>('light');
   const t = TRANSLATIONS[globalLanguage] || TRANSLATIONS['English'];
 
   // --- Browser History Integration for Back/Forward Navigation ---
@@ -209,11 +182,7 @@ export default function Home() {
   const textMuted = isLight ? 'text-zinc-400' : 'text-white/60';
 
   return (
-    <div className={`min-h-screen relative transition-colors duration-500 ${
-      theme === 'dark' ? 'dark bg-zinc-950 text-white' : 
-      theme === 'nature' ? 'dark text-white' : 
-      'bg-white text-zinc-900'
-    }`}>
+    <div className="min-h-screen relative bg-white text-zinc-900">
       <BackgroundMusic isMuted={isMuted} />
 
       <StaticBackground activeView={activeView} isLight={isLight} />
@@ -266,7 +235,6 @@ export default function Home() {
                 onClick={(e) => {
                   e.preventDefault();
                   const baseUrl = process.env.NEXT_PUBLIC_SAHAYAK_URL || "https://sahayak-portal-mosje.vercel.app";
-                  // Pass the latest wellness score to Sahayak as a query param
                   const latestScore = entries.length > 0 && entries[0].analysis?.wellness_score 
                     ? entries[0].analysis.wellness_score 
                     : 85;
@@ -274,21 +242,21 @@ export default function Home() {
                 }}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-3 py-2 border rounded-xl transition-all h-10 bg-blue-950/40 hover:bg-blue-900/60 border-blue-500/40 text-blue-300 hover:text-white shadow-sm"
+                className="flex items-center gap-2 px-3 py-2 border rounded-xl transition-all h-10 bg-indigo-600 hover:bg-indigo-700 border-indigo-600 text-white shadow-sm"
                 title="Open Sahayak Caseworker & Witness Protection Dashboard"
               >
-                <Shield className="w-4 h-4 text-blue-400" />
+                <Shield className="w-4 h-4 text-white" />
                 <span className="text-xs font-bold tracking-wide">{t.sahayakAdmin}</span>
               </a>
 
               {/* AI Status Indicator */}
               <div 
-                className={`flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-black border backdrop-blur-md px-3 py-2 rounded-xl h-10 dark:bg-white/5 dark:border-white/10 bg-zinc-100 border-zinc-200`}
+                className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-black border px-3 py-2 rounded-xl h-10 bg-zinc-100 border-zinc-200"
                 role="status"
                 aria-live="polite"
               >
-                <div className={`w-2 h-2 rounded-full ${apiConnected ? 'bg-green-400 shadow-[0_0_8px_rgba(74,222,128,0.6)]' : 'bg-rose-400'}`}></div>
-                <span className={`font-black dark:text-white/60 text-zinc-600`}>{apiConnected ? t.aiReady : t.aiOffline}</span>
+                <div className={`w-2 h-2 rounded-full ${apiConnected ? 'bg-green-500' : 'bg-rose-400'}`}></div>
+                <span className="font-black text-zinc-600">{apiConnected ? t.aiReady : t.aiOffline}</span>
               </div>
             </div>
           </nav>
@@ -300,13 +268,13 @@ export default function Home() {
                 <Image src="/logo.png" alt="ZenGuard Logo" width={256} height={256} className="w-48 h-48 md:w-64 md:h-64 object-contain drop-shadow-2xl animate-gentle-float" priority />
               </div>
               <div className="max-w-3xl mx-auto">
-                <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-[1.1] drop-shadow-xl tracking-tight animate-fade-up stagger-2 dark:text-white text-zinc-900" style={{ fontFamily: 'var(--font-heading)' }}>
+                <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-[1.1] tracking-tight animate-fade-up stagger-2 text-zinc-900" style={{ fontFamily: 'var(--font-heading)' }}>
                   {t.heroTitle} <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 animate-gradient-x">{t.heroHighlight}</span>
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-500 to-blue-600 animate-gradient-x">{t.heroHighlight}</span>
                 </h1>
-                <p className="text-lg md:text-xl mb-6 max-w-xl mx-auto leading-relaxed drop-shadow-md font-light animate-fade-up stagger-3 dark:text-zinc-100 text-zinc-500">
+                <p className="text-lg md:text-xl mb-6 max-w-xl mx-auto leading-relaxed font-light animate-fade-up stagger-3 text-zinc-600">
                   {t.heroSub} 
-                  <span className={`block mt-2 font-medium dark:text-zinc-300 text-zinc-600`}>{t.heroSubHighlight}</span>
+                  <span className="block mt-2 font-medium text-zinc-700">{t.heroSubHighlight}</span>
                 </p>
 
                 {/* Privacy & Feature Badges */}
