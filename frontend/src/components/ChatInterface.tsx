@@ -476,7 +476,7 @@ export default function ChatInterface({ onBack, sessionLanguage = 'English' }: C
           <div className="flex items-center justify-between mb-8">
             <button
               onClick={onBack}
-              className="px-4 py-2 rounded-xl dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-700 dark:hover:bg-white/10 hover:bg-zinc-200 transition-all flex items-center gap-2 text-sm font-medium border dark:border-white/10 border-zinc-200"
+              className="px-4 py-2 rounded-xl dark:bg-white/10 bg-zinc-100 dark:text-zinc-200 text-zinc-800 dark:hover:bg-white/15 hover:bg-zinc-200 transition-all flex items-center gap-2 text-sm font-semibold border dark:border-white/10 border-zinc-300 shadow-sm"
             >
               <ArrowLeft className="w-4 h-4" />
               Back
@@ -485,7 +485,7 @@ export default function ChatInterface({ onBack, sessionLanguage = 'English' }: C
               <h2 className="text-2xl md:text-3xl font-bold dark:text-white text-zinc-900 tracking-tight" style={{ fontFamily: 'var(--font-heading)' }}>
                 Choose an AI Companion
               </h2>
-              <p className="text-xs text-zinc-400 mt-1">Select a therapeutic presence calibrated for your emotional needs</p>
+              <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 font-medium mt-1">Select a therapeutic presence calibrated for your emotional needs</p>
             </div>
             <div className="w-20 hidden md:block"></div>
           </div>
@@ -496,10 +496,10 @@ export default function ChatInterface({ onBack, sessionLanguage = 'English' }: C
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-4 py-2 rounded-full text-xs md:text-sm font-medium capitalize transition-all border ${
+                className={`px-4 py-2 rounded-full text-xs md:text-sm font-semibold capitalize transition-all border ${
                   activeCategory === cat
-                    ? 'bg-purple-600 text-white shadow-lg shadow-purple-500/30 border-purple-500'
-                    : 'dark:bg-white/5 dark:text-zinc-400 dark:hover:bg-white/10 dark:hover:text-white bg-zinc-100 text-zinc-600 hover:bg-zinc-200 hover:text-zinc-900 border-zinc-200 dark:border-white/5'
+                    ? 'bg-purple-600 text-white shadow-md shadow-purple-500/30 border-purple-500'
+                    : 'dark:bg-white/10 dark:text-zinc-200 dark:hover:bg-white/15 dark:hover:text-white bg-zinc-100 text-zinc-700 hover:bg-zinc-200 hover:text-zinc-900 border-zinc-300 dark:border-white/10'
                 }`}
               >
                 {cat.replace('_', ' ') === 'all' ? 'All Companions' : cat.replace('_', ' ')}
@@ -509,9 +509,9 @@ export default function ChatInterface({ onBack, sessionLanguage = 'English' }: C
 
           {/* Mode Cards */}
           {isLoadingModes ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
-              {Array.from({ length: 12 }).map((_, i) => (
-                <div key={i} className="h-72 w-full rounded-2xl bg-zinc-200 dark:bg-zinc-800 animate-pulse flex flex-col justify-end p-5 border border-zinc-300 dark:border-white/5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5">
+              {Array.from({ length: 10 }).map((_, i) => (
+                <div key={i} className="h-80 w-full rounded-2xl bg-zinc-200 dark:bg-zinc-800 animate-pulse flex flex-col justify-end p-5 border border-zinc-300 dark:border-white/10">
                   <div className="h-6 w-3/4 bg-zinc-300 dark:bg-zinc-700 rounded mb-3"></div>
                   <div className="h-4 w-full bg-zinc-300 dark:bg-zinc-700 rounded mb-2"></div>
                   <div className="h-4 w-5/6 bg-zinc-300 dark:bg-zinc-700 rounded mb-4"></div>
@@ -520,12 +520,12 @@ export default function ChatInterface({ onBack, sessionLanguage = 'English' }: C
               ))}
             </div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5">
               {filteredModes.map((mode, index) => (
                 <button
                   key={mode.id}
                   onClick={() => handleModeSelect(mode)}
-                  className="group relative h-72 w-full rounded-2xl overflow-hidden transition-all duration-500 shadow-lg hover:shadow-2xl hover:scale-[1.03] active:scale-[0.98] flex flex-col justify-end text-left border border-white/10 dark:border-white/5 bg-zinc-900"
+                  className="group relative h-80 w-full rounded-2xl overflow-hidden transition-all duration-300 shadow-md hover:shadow-2xl hover:-translate-y-1 active:scale-[0.98] flex flex-col justify-end text-left border border-zinc-200 dark:border-white/10 bg-zinc-950"
                 >
                   {/* Background Image/Emoji */}
                   {mode.image ? (
@@ -533,35 +533,39 @@ export default function ChatInterface({ onBack, sessionLanguage = 'English' }: C
                       src={mode.image} 
                       alt={mode.name}
                       fill
-                      priority={index < 6}
-                      sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 16vw"
-                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      priority={index < 5}
+                      sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 20vw"
+                      className="object-cover brightness-90 group-hover:brightness-100 group-hover:scale-105 transition-all duration-500"
                       onError={(e) => {
                         (e.target as HTMLImageElement).style.display = 'none';
                       }}
                     />
                   ) : (
-                    <div className="absolute inset-0 w-full h-full flex items-center justify-center bg-zinc-800 transition-transform duration-700 group-hover:scale-110">
+                    <div className="absolute inset-0 w-full h-full flex items-center justify-center bg-zinc-900 transition-transform duration-500 group-hover:scale-105">
                       <span className="text-7xl">{mode.emoji}</span>
                     </div>
                   )}
 
-                  {/* Blackout Gradient for text readability */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/55 to-transparent"></div>
+                  {/* Multi-stop protective dark overlay for guaranteed readability */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/75 via-55% to-black/20"></div>
 
-                  {/* Content (Text & Tags) positioned at bottom */}
-                  <div className="relative z-10 p-5 w-full">
-                    <h3 className="font-bold text-white text-xl md:text-2xl tracking-tight leading-tight mb-1 drop-shadow-lg">
-                      {mode.name}
-                    </h3>
-                    <p className="text-sm text-zinc-300 line-clamp-2 mb-3 drop-shadow-md">
-                      {mode.description}
-                    </p>
-                    {mode.category && (
-                      <span className="inline-block text-[10px] uppercase font-bold tracking-wider text-white bg-white/20 backdrop-blur-md border border-white/30 px-2.5 py-1 rounded-full shadow-sm">
+                  {/* Floating Top Category Badge */}
+                  {mode.category && (
+                    <div className="absolute top-3 left-3 z-10">
+                      <span className="inline-block text-[10px] uppercase font-bold tracking-wider text-purple-200 bg-purple-950/80 backdrop-blur-md border border-purple-500/40 px-2.5 py-1 rounded-full shadow-md">
                         {mode.category.replace('_', ' ')}
                       </span>
-                    )}
+                    </div>
+                  )}
+
+                  {/* Content (Text) with dedicated dark backdrop panel for crystal clear readability */}
+                  <div className="relative z-10 p-4.5 w-full bg-black/60 backdrop-blur-md border-t border-white/15 rounded-b-2xl">
+                    <h3 className="font-bold text-white text-lg tracking-tight leading-snug mb-1 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                      {mode.name}
+                    </h3>
+                    <p className="text-xs sm:text-[13px] text-zinc-100 font-medium line-clamp-3 leading-relaxed drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
+                      {mode.description}
+                    </p>
                   </div>
                 </button>
               ))}
@@ -569,8 +573,8 @@ export default function ChatInterface({ onBack, sessionLanguage = 'English' }: C
           )}
 
           {/* Privacy notice */}
-          <div className="flex items-center justify-center gap-2 mt-8 text-xs text-zinc-400">
-            <ShieldCheck className="w-4 h-4 text-emerald-400" />
+          <div className="flex items-center justify-center gap-2 mt-8 text-xs text-zinc-600 dark:text-zinc-300 font-medium">
+            <ShieldCheck className="w-4 h-4 text-emerald-500" />
             <span>100% On-Device Local Processing • Zero Data Transmitted • Ephemeral Sessions</span>
           </div>
         </div>
