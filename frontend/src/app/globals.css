@@ -4,8 +4,8 @@
 
 /* ===== SHADCN THEME VARIABLES ===== */
 :root {
-  --background: #FBF9F4;
-  --paper-grain: url('/paper-texture-light.svg');
+  --background: #FFFFFF;
+  --paper-grain: none;
   --foreground: oklch(0.145 0 0);
   --card: rgba(255, 255, 255, 0.7);
   --card-foreground: oklch(0.145 0 0);
@@ -199,35 +199,19 @@
 
 body {
   font-family: var(--font-body);
-  background-color: var(--background);
+  background-color: #FFFFFF;
   min-height: 100vh;
-  color: #2D3748;
+  color: #1a202c;
   line-height: 1.6;
 }
 
 /* Universal Satisfying Tactile Paper Texture */
 .paper-textured-bg {
-  background-color: #F9F8F6;
-  background-image: 
-    radial-gradient(ellipse at 50% 0%, rgba(200, 180, 150, 0.15) 0%, transparent 60%),
-    radial-gradient(ellipse at 80% 100%, rgba(210, 190, 160, 0.15) 0%, transparent 50%),
-    url('/paper-texture-light.svg');
-  background-repeat: repeat;
-  background-size: auto, auto, 360px 360px;
+  background-color: #FFFFFF;
 }
 
 .paper-grain-overlay {
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: 90;
-  background-image: url('/paper-texture.svg');
-  background-repeat: repeat;
-  background-size: 320px 320px;
-  opacity: 0.16;
-  mix-blend-mode: screen;
+  display: none;
 }
 
 /* Animations */
@@ -342,28 +326,26 @@ body {
   width: 100%;
   min-height: 200px;
   padding: var(--space-lg);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: #FFFFFF;
   font-family: var(--font-body);
   font-size: 1.1rem;
   line-height: 1.8;
-  color: white;
+  color: #1a202c;
   resize: vertical;
   transition: all 0.3s var(--ease-gentle);
 }
 
 .journal-input:focus {
   outline: none;
-  border-color: rgba(168, 139, 250, 0.6);
-  box-shadow: 0 0 20px rgba(168, 139, 250, 0.2);
-  background: rgba(255, 255, 255, 0.15);
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15);
+  background: #FAFAFA;
 }
 
 .journal-input::placeholder {
-  color: rgba(255, 255, 255, 0.5);
+  color: #9CA3AF;
   font-style: italic;
 }
 
