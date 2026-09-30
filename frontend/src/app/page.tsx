@@ -262,11 +262,11 @@ export default function Home() {
 
               {/* Sahayak MoSJE Admin Portal Button */}
               <a
-                href={process.env.NEXT_PUBLIC_SAHAYAK_URL || "http://localhost:5173"}
+                href={process.env.NEXT_PUBLIC_SAHAYAK_URL || "https://sahayak-portal-mosje.vercel.app"}
                 onClick={(e) => {
                   e.preventDefault();
-                  const baseUrl = process.env.NEXT_PUBLIC_SAHAYAK_URL || "http://localhost:5173";
-                  // Grab the latest score if available, otherwise fallback
+                  const baseUrl = process.env.NEXT_PUBLIC_SAHAYAK_URL || "https://sahayak-portal-mosje.vercel.app";
+                  // Pass the latest wellness score to Sahayak as a query param
                   const latestScore = entries.length > 0 && entries[0].analysis?.wellness_score 
                     ? entries[0].analysis.wellness_score 
                     : 85;
