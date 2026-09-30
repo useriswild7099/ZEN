@@ -58,13 +58,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`dark ${inter.variable} ${spaceGrotesk.variable} ${courierPrime.variable}`}>
-      <body className="antialiased bg-[#0E0D13] text-white paper-textured-bg relative min-h-screen">
+    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} ${courierPrime.variable}`}>
+      <body className="antialiased bg-[#F9F8F6] text-zinc-900 paper-textured-bg relative min-h-screen">
         {/* Universal Satisfying Tactile Paper Grain Overlay across entire application */}
         <div 
-          className="fixed inset-0 pointer-events-none z-50 opacity-25 mix-blend-screen"
+          className="fixed inset-0 pointer-events-none z-50 opacity-40 mix-blend-multiply"
           style={{
-            backgroundImage: "url('/paper-texture.svg')",
+            backgroundImage: "url('/paper-texture-light.svg')",
             backgroundRepeat: "repeat",
             backgroundSize: "320px 320px"
           }}
@@ -89,9 +89,9 @@ export default function RootLayout({
         </SmoothScroller>
         
         {/* Statutory Rights & Schemes Footer */}
-        <footer className="text-center py-6 px-4 text-xs text-zinc-500 border-t border-zinc-800/50 bg-black/30 backdrop-blur-sm">
-          <p className="font-medium text-zinc-400">Zero-Knowledge Offline Privacy · No chat transcripts or journal entries leave your device.</p>
-          <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-1 mt-2 text-[11px] text-zinc-400">
+        <footer className="text-center py-6 px-4 text-xs text-zinc-600 border-t border-zinc-300/50 bg-white/30 backdrop-blur-sm">
+          <p className="font-medium text-zinc-700">Zero-Knowledge Offline Privacy · No chat transcripts or journal entries leave your device.</p>
+          <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-1 mt-2 text-[11px] text-zinc-600">
             <a href="https://telemanas.mohfw.gov.in" target="_blank" rel="noopener noreferrer" className="hover:text-purple-400 underline underline-offset-2">
               Tele-MANAS (24/7 Helpline: 14416)
             </a>
